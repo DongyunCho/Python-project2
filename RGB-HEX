@@ -1,0 +1,55 @@
+"""
+Now we're going to make something 
+looking really different. 
+"RGB to HEX"
+"""
+invalid_msg = "Error! Invaild value entered."
+def rgb_hex():
+  red = int(raw_input("Enter red value:"))
+  if red<0 or red>255:
+    print invalid_msg
+    return
+  green = int(raw_input("Enter green value:"))
+  if green<0 or green>255: #MOre easier?class?
+    print invalid_msg
+    return   
+  blue = int(raw_input("Enter blue value:"))
+  if blue<0 or blue>255: #MOre easier??
+    print invalid_msg
+    return
+  val = (red << 16) + (green << 8) + blue #No11.REFERENCE
+  print "%s" % (hex(val)[2:]).upper()
+    
+def hex_rgb():
+  hex_val = raw_input("Enter the color(six hexadecimal digit):")#14
+  if len(hex_val) != 6:
+    print invalid_msg
+  else:
+    hex_val = int(hex_val, 16) #17!!!!!!!!???????
+    two_hex_digits = 2**8
+    blue = hex_val % two_hex_digits
+    hex_val = hex_val>>8
+    green = hex_val % two_hex_digits
+    hex_val = hex_val>>8
+    red = hex_val % two_hex_digits
+    print "Red: %s Green: %s Blue: %s" %\
+    (red, green, blue)#int-->%d ???? str????
+    
+def convert():
+  start = True
+  while start:
+    option = raw_input("Enter 1 to convert RGB to HEX. Enter 2 to convert HEX to RGB. Enter X to Exit:")
+    if option == "1":
+      print "RGB to HEX..."
+      rgb_hex()
+    elif option == "2":
+      print "HEX to RGB..."
+      hex_rgb()
+    elif option == "X" or option == "x":
+      print"Good Bye!"
+      start = False #when break or False or...????????????
+    else:
+      print "Error."
+      return
+    
+convert()
